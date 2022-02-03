@@ -4,13 +4,15 @@
   "private": false,
   "author": "itizawa <itizawa.pen@gmail.com>",
   "homepage": "https://github.com/itizaworld/zawalog",
-  "license": "MIT",  "scripts": {
+  "license": "MIT",
+  "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
     "lint": "eslint \"./**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
+    "@nextui-org/react": "^1.0.2-beta.3",
     "date-fns": "2.21.3",
     "gray-matter": "4.0.3",
     "next": "latest",
