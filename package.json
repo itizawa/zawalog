@@ -1,6 +1,10 @@
 {
-  "private": true,
-  "scripts": {
+  "name": "zawalog",
+  "version": "1.0.9",
+  "private": false,
+  "author": "itizawa <itizawa.pen@gmail.com>",
+  "homepage": "https://github.com/itizaworld/zawalog",
+  "license": "MIT",  "scripts": {
     "dev": "next",
     "build": "next build",
     "start": "next start",
