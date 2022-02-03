@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import Button from '@nextui-org/react/button';
-import { getAllPosts } from '../../lib/api';
+import { getAllPosts } from '~/lib/api';
 import { Post } from '~/domains/Post';
 
 type Props = {
