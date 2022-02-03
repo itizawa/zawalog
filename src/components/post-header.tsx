@@ -1,4 +1,4 @@
-import Author from '../src/domains/Author';
+import Author from '../domains/Author';
 import Avatar from './avatar';
 import DateFormatter from './date-formatter';
 import CoverImage from './cover-image';
