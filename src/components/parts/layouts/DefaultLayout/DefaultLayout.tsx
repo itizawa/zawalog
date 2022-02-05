@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Navigation } from '../../commons/Navigation';
+import { Navigation } from '~/components/parts/commons/Navigation';
 
 export const DefaultLayout: FC = ({ children }) => {
   return (
