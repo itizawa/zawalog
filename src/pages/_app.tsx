@@ -6,12 +6,10 @@ const myDarkTheme = createTheme({
   type: 'dark',
   theme: {
     colors: {
-      background: '#121212',
+      background: '#111122',
       text: '#cecece',
-      // you can also create your own color
-      myDarkColor: '#ff4ecd',
       secondary: '#7856ff',
-      // ...  more colors
+      selection: '#7856ff',
     },
     space: {},
     fonts: {
