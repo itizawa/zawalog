@@ -7,6 +7,7 @@ import { Post } from '~/domains/Post';
 
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
 import { PostCard } from '~/components/domains/Post';
+import { Link } from '~/components/parts/commons/Link';
 
 type Props = {
   allPosts: Post[];
@@ -24,14 +25,18 @@ const Index = ({ allPosts }: Props) => {
         <Text h1>All Post</Text>
         <Grid.Container gap={2}>
           <Grid xs={12}>
-            <PostCard post={firstPost} />
+            <Link href={`/posts/${firstPost.slug}`}>
+              <PostCard post={firstPost} />
+            </Link>
           </Grid>
         </Grid.Container>
         <Grid.Container gap={2}>
           {postsExceptFirst.map((post, index) => {
             return (
               <Grid key={index} xs={12} sm={6}>
-                <PostCard post={post} />
+                <Link href={`/posts/${post.slug}`}>
+                  <PostCard post={post} />
+                </Link>
               </Grid>
             );
           })}
