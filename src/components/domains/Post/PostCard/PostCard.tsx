@@ -16,7 +16,8 @@ export const PostCard: VFC<Props> = ({ post }) => {
           </Text>
         </Col>
       </Card.Header>
-      <Card.Image src={post.coverImage} height={340} width="100%" alt="Card image background" />
+      {/* TODO set ogp for without coverImage */}
+      <Card.Image src={post.coverImage || '/'} height={340} width="100%" alt="Card image background" />
     </Card>
   );
 };
