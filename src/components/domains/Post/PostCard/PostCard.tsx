@@ -29,7 +29,7 @@ export const PostCard: VFC<Props> = ({ post }) => {
         }}
       >
         <Col>
-          <Text size={10} weight="bold" transform="uppercase" color="$black">
+          <Text size={12} weight="bold" transform="uppercase" color="$black">
             {post.title}
           </Text>
           <Text size={6} weight="bold" transform="uppercase" color="$black">
