@@ -3,6 +3,7 @@ import ErrorPage from 'next/error';
 import Head from 'next/head';
 import { Container, Text } from '@nextui-org/react';
 import { format } from 'date-fns';
+import styled from 'styled-components';
 import markdownToHtml from '~/lib/markdownToHtml';
 import { getPostBySlug, getAllPosts } from '~/lib/api';
 import { Post } from '~/domains/Post';
@@ -42,7 +43,7 @@ const PostPage = ({ post }: Props) => {
                 投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
               </Text>
               <img src={post.coverImage} alt={`Cover Image for ${post.title}`} />
-              <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              <StyledDiv dangerouslySetInnerHTML={{ __html: post.content }} />
             </article>
           </>
         )}
@@ -52,6 +53,39 @@ const PostPage = ({ post }: Props) => {
 };
 
 export default PostPage;
+
+const StyledDiv = styled.div`
+  word-break: break-all;
+
+  img {
+    width: 100%;
+  }
+
+  a {
+    color: #ccc;
+  }
+
+  pre {
+    padding: 16px;
+    background: black;
+    code {
+      background: black;
+    }
+  }
+
+  h1 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #6f42c1;
+  }
+
+  p {
+    line-height: 2rem;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+`;
 
 type Params = {
   params: {
