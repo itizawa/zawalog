@@ -22,7 +22,8 @@ const Index = ({ allPosts }: Props) => {
         <title>Zawalog | Top</title>
       </Head>
       <Container xs>
-        <Text h1>All Post</Text>
+        <Text h3>🎉 Welcome to Zawalog 🎉</Text>
+        <Text css={{ my: '$4' }}>Zawalog は、 itizawa のブログ兼アウトプットをまとめる統合サイトです</Text>
         <Grid.Container gap={2}>
           <Grid xs={12}>
             <Link href={`/posts/${firstPost.slug}`}>
@@ -49,7 +50,7 @@ const Index = ({ allPosts }: Props) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(['title', 'date', 'slug', 'author', 'coverImage', 'excerpt']);
+  const allPosts = getAllPosts(['title', 'date', 'slug', 'coverImage', 'description']);
 
   return {
     props: { allPosts },
