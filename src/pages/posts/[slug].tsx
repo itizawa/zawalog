@@ -1,16 +1,14 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Head from 'next/head';
-import Container from '~/components/container';
-import PostBody from '~/components/post-body';
-import Header from '~/components/header';
-import PostHeader from '~/components/post-header';
-import Layout from '~/components/layout';
-import PostTitle from '~/components/post-title';
-import { CMS_NAME } from '~/lib/constants';
+import { Container, Text } from '@nextui-org/react';
+import { format } from 'date-fns';
+import styled from 'styled-components';
 import markdownToHtml from '~/lib/markdownToHtml';
 import { getPostBySlug, getAllPosts } from '~/lib/api';
 import { Post } from '~/domains/Post';
+import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
+import { DATE_FORMAT } from '~/constants/dateFormat';
 
 type Props = {
   post: Post;
@@ -18,37 +16,76 @@ type Props = {
   preview?: boolean;
 };
 
-const PostPage = ({ post, preview }: Props) => {
+const PostPage = ({ post }: Props) => {
   const router = useRouter();
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+
   return (
-    <Layout preview={preview}>
-      <Container>
-        <Header />
+    <DefaultLayout>
+      <Head>
+        <title>Zawalog | Top</title>
+      </Head>
+      <Container xs>
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <Text>Loading…</Text>
         ) : (
           <>
             <article className="mb-32">
               <Head>
-                <title>
-                  {post.title} | Next.js Blog Example with {CMS_NAME}
-                </title>
-                <meta property="og:image" content={post.ogImage.url} />
+                <title>{post.title}</title>
+                <meta property="og:image" content={post.coverImage} />
               </Head>
-              <PostHeader title={post.title} coverImage={post.coverImage} date={post.date} author={post.author} />
-              <PostBody content={post.content} />
+              <Text h1>{post.title}</Text>
+              <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
+                投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
+              </Text>
+              <img src={post.coverImage} alt={`Cover Image for ${post.title}`} />
+              <StyledDiv dangerouslySetInnerHTML={{ __html: post.content }} />
             </article>
           </>
         )}
       </Container>
-    </Layout>
+    </DefaultLayout>
   );
 };
 
 export default PostPage;
+
+const StyledDiv = styled.div`
+  word-break: break-all;
+
+  img {
+    width: 100%;
+  }
+
+  a {
+    color: #89baf7;
+  }
+
+  pre {
+    padding: 16px;
+    background: black;
+    code {
+      background: black;
+    }
+  }
+
+  h1 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #6f42c1;
+  }
+
+  p {
+    line-height: 2rem;
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+`;
 
 type Params = {
   params: {
