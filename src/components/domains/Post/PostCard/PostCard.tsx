@@ -12,7 +12,7 @@ type Props = {
 
 export const PostCard: VFC<Props> = ({ post }) => {
   return (
-    <StyledCard clickable cover css={{ overflow: 'hidden' }}>
+    <StyledCard clickable cover css={{ overflow: 'hidden' }} bordered>
       <Card.Body>
         {/* TODO set ogp for without coverImage */}
         <Card.Image src={post.coverImage || '/'} showSkeleton height="100%" width="100%" alt={`${post}-cover`} />
@@ -25,14 +25,14 @@ export const PostCard: VFC<Props> = ({ post }) => {
           bgBlur: '#ffffff',
           borderTop: '$borderWeights $light solid rgba(255, 255, 255, 0.2)',
           zIndex: 1,
-          bottom: -100,
+          bottom: -200,
         }}
       >
         <Col>
-          <Text size={12} weight="bold" transform="uppercase" color="$black">
+          <Text size={24} weight="bold" color="$black">
             {post.title}
           </Text>
-          <Text size={6} weight="bold" transform="uppercase" color="$black">
+          <Text size={16} weight="bold" transform="uppercase" color="$black">
             {format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
           </Text>
         </Col>
