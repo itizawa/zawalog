@@ -27,7 +27,16 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="js">
-        <Head>{CssBaseline.flush()}</Head>
+        <Head>
+          {CssBaseline.flush()}
+          <link rel="apple-touch-icon" sizes="180x180" href="/favicons/favicon.png" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png" />
+          <link rel="manifest" href="/favicons/site.webmanifest" />
+          <link rel="mask-icon" href="/favicons/favicon.png" color="#6f42c1" />
+          <link rel="shortcut icon" href="/favicons/favicon.ico" />
+          <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+        </Head>
         <body>
           <Main />
           <NextScript />
