@@ -9,6 +9,7 @@ import { getPostBySlug, getAllPosts } from '~/lib/api';
 import { Post } from '~/domains/Post';
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
 import { DATE_FORMAT } from '~/constants/dateFormat';
+import { OgpHead } from '~/components/parts/layouts/OgpHead';
 
 type Props = {
   post: Post;
@@ -25,8 +26,9 @@ const PostPage = ({ post }: Props) => {
 
   return (
     <DefaultLayout>
+      <OgpHead title={`Zawalog | ${post.title}`} />
       <Head>
-        <title>Zawalog | Top</title>
+        <title>Zawalog | {post.title}</title>
       </Head>
       <Container xs>
         {router.isFallback ? (
