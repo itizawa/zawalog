@@ -1,14 +1,15 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import Head from 'next/head';
 import { Container, Text } from '@nextui-org/react';
 import { format } from 'date-fns';
 import styled from 'styled-components';
+import Head from 'next/head';
 import markdownToHtml from '~/lib/markdownToHtml';
 import { getPostBySlug, getAllPosts } from '~/lib/api';
 import { Post } from '~/domains/Post';
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
 import { DATE_FORMAT } from '~/constants/dateFormat';
+import { OgpHead } from '~/components/parts/layouts/OgpHead';
 
 type Props = {
   post: Post;
@@ -25,9 +26,7 @@ const PostPage = ({ post }: Props) => {
 
   return (
     <DefaultLayout>
-      <Head>
-        <title>Zawalog | Top</title>
-      </Head>
+      <OgpHead />
       <Container xs>
         {router.isFallback ? (
           <Text>Loading…</Text>

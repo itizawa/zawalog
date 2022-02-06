@@ -1,5 +1,3 @@
-import Head from 'next/head';
-
 import { Container, Grid, Text } from '@nextui-org/react';
 import { getAllPosts } from '~/lib/api';
 
@@ -8,6 +6,7 @@ import { Post } from '~/domains/Post';
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
 import { PostCard } from '~/components/domains/Post';
 import { Link } from '~/components/parts/commons/Link';
+import { OgpHead } from '~/components/parts/layouts/OgpHead';
 
 type Props = {
   allPosts: Post[];
@@ -18,9 +17,7 @@ const Index = ({ allPosts }: Props) => {
 
   return (
     <DefaultLayout>
-      <Head>
-        <title>Zawalog | Top</title>
-      </Head>
+      <OgpHead title="Zawalog | Top" />
       <Container xs>
         <Text h3>🎉 Welcome to Zawalog 🎉</Text>
         <Text css={{ my: '$4' }}>Zawalog は、 itizawa のブログ兼アウトプットをまとめる統合サイトです</Text>
