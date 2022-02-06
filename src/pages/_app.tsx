@@ -7,7 +7,7 @@ const myDarkTheme = createTheme({
   theme: {
     colors: {
       background: '#111122',
-      text: '#cecece',
+      text: '#eee',
       secondary: '#7856ff',
       selection: '#7856ff',
     },

@@ -62,7 +62,7 @@ const StyledDiv = styled.div`
   }
 
   a {
-    color: #ccc;
+    color: #89baf7;
   }
 
   pre {
