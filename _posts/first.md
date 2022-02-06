@@ -1,14 +1,24 @@
 ---
-title: 'Webev'
-excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
-coverImage: 'https://www.webev.cloud//images/eye-catch-dark.png'
-date: '2020-03-16T05:35:07.322Z'
+title: 'Zawalogをオープンしました'
+description: 'NextUI を使うためにブログを作成しました'
+coverImage: '/assets/images/dark-logo.png'
+date: '2022-02-07T09:00:00'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus. Praesent elementum facilisis leo vel fringilla. Congue mauris rhoncus aenean vel. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.
+## ブログをオープンしました
 
-Venenatis cras sed felis eget velit. Consectetur libero id faucibus nisl tincidunt. Gravida in fermentum et sollicitudin ac orci phasellus egestas tellus. Volutpat consequat mauris nunc congue nisi vitae. Id aliquet risus feugiat in ante metus dictum at tempor. Sed blandit libero volutpat sed cras. Sed odio morbi quis commodo odio aenean sed adipiscing. Velit euismod in pellentesque massa placerat. Mi bibendum neque egestas congue quisque egestas diam in arcu. Nisi lacus sed viverra tellus in. Nibh cras pulvinar mattis nunc sed. Luctus accumsan tortor posuere ac ut consequat semper viverra. Fringilla ut morbi tincidunt augue interdum velit euismod.
+NextUI を使うためにブログを作成しました。  
 
-## Lorem Ipsum
+[テンプレートが提供されている](https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript) ので、記事を管理方法やデータの取得など特に考えずに実装完了しました。  
+自分の納得いくデザインに調整するのが一番時間かかりました。トータルで 5h くらいでした。
 
-Tristique senectus et netus et malesuada fames ac turpis. Ridiculous mus mauris vitae ultricies leo integer malesuada nunc vel. In mollis nunc sed id semper. Egestas tellus rutrum tellus pellentesque. Phasellus vestibulum lorem sed risus ultricies tristique nulla. Quis blandit turpis cursus in hac habitasse platea dictumst quisque. Eros donec ac odio tempor orci dapibus ultrices. Aliquam sem et tortor consequat id porta nibh. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Diam vulputate ut pharetra sit amet. Ut tellus elementum sagittis vitae et leo. Arcu non odio euismod lacinia at quis risus sed vulputate.
+リポジトリは公開しているので [こちらからご確認ください](https://github.com/itizaworld/zawalog)
+
+## やりたいこと
+
+- CMSで記事を管理したい
+  - 記事の描きごごちや画像などのデータの管理を考えるといち早く整備したいところ。
+- 動的OGPを実装する
+  - 記事ごとにタイトルを表示するOGPを生成するようにしたい。
+
+細かい修正は色々あるけど少しづつ直す🙏
