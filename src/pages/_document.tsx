@@ -26,7 +26,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="js">
+      <Html lang="ja">
         <Head>
           {CssBaseline.flush()}
           <link rel="apple-touch-icon" sizes="180x180" href="/favicons/favicon.png" />

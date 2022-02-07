@@ -29,25 +29,23 @@ const PostPage: NextPage<Props> = ({ post }) => {
 
   return (
     <DefaultLayout>
-      <OgpHead image={`/api/ogp/post?title=${post.title}`} description={post.description} />
+      <OgpHead image={`/api/ogp/post?title=${post.title}`} description={post.title} />
       <Container xs>
         {router.isFallback ? (
           <Text>Loading…</Text>
         ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>{post.title}</title>
-                <meta property="og:image" content={post.coverImage} />
-              </Head>
-              <Text h3>{post.title}</Text>
-              <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
-                投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
-              </Text>
-              <img src={post.coverImage} alt={`Cover Image for ${post.title}`} />
-              <StyledDiv dangerouslySetInnerHTML={{ __html: post.content }} />
-            </article>
-          </>
+          <article className="mb-32">
+            <Head>
+              <title>{post.title}</title>
+              <meta property="og:image" content={post.coverImage} />
+            </Head>
+            <Text h3>{post.title}</Text>
+            <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
+              投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
+            </Text>
+            <img src={post.coverImage} width="100%" height="auto" alt={`Cover Image for ${post.title}`} />
+            <StyledDiv dangerouslySetInnerHTML={{ __html: post.content }} />
+          </article>
         )}
       </Container>
     </DefaultLayout>
@@ -96,7 +94,7 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage']);
+  const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage', 'description']);
   const content = await markdownToHtml(post.content || '');
 
   return {
