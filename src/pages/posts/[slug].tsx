@@ -13,6 +13,7 @@ import { Post } from '~/domains/Post';
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
 import { DATE_FORMAT } from '~/constants/dateFormat';
 import { OgpHead } from '~/components/parts/layouts/OgpHead';
+import { extractTitleFromPath } from '~/lib/extractTitleFromPath';
 
 type Props = {
   post: Post;
@@ -23,28 +24,29 @@ type Props = {
 const PostPage: NextPage<Props> = ({ post }) => {
   const router = useRouter();
 
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !post?._id) {
     return <ErrorPage statusCode={404} />;
   }
 
+  const title = extractTitleFromPath(post.path);
+
   return (
     <DefaultLayout>
-      <OgpHead image={`/api/ogp/post?title=${post.title}`} description={post.title} />
+      <OgpHead image={`/api/ogp/post?title=${title}`} description={title} />
       <Container xs>
         {router.isFallback ? (
           <Text>Loading…</Text>
         ) : (
           <article className="mb-32">
             <Head>
-              <title>{post.title}</title>
-              <meta property="og:image" content={post.coverImage} />
+              <title>{title}</title>
             </Head>
-            <Text h3>{post.title}</Text>
+            <Text h3>{title}</Text>
             <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
-              投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
+              投稿日：{format(new Date(post.createdAt), DATE_FORMAT.EXCEPT_SECOND)}
             </Text>
-            <img src={post.coverImage} width="100%" height="auto" alt={`Cover Image for ${post.title}`} />
-            <StyledDiv dangerouslySetInnerHTML={{ __html: post.content }} />
+            {/* <img src={post.coverImage} width="100%" height="auto" alt={`Cover Image for ${post.title}`} /> */}
+            <StyledDiv dangerouslySetInnerHTML={{ __html: '' }} />
           </article>
         )}
       </Container>
