@@ -2,6 +2,7 @@ import { Container, Grid, Text } from '@nextui-org/react';
 import Image from 'next/image';
 import fetch from 'node-fetch';
 
+import styled from 'styled-components';
 import { Post } from '~/domains/Post';
 
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
@@ -15,8 +16,6 @@ type Props = {
 };
 
 const Index = ({ recentPosts }: Props) => {
-  const [firstPost, ...postsExceptFirst] = recentPosts;
-
   return (
     <DefaultLayout>
       <OgpHead title="Zawalog | Top" />
@@ -25,20 +24,13 @@ const Index = ({ recentPosts }: Props) => {
         <Image src={IMAGE_PATH.OGP} width={1200} height={630} />
         <Text css={{ my: '$4' }}>Zawalog は、 itizawa のブログ兼アウトプットをまとめる統合サイトです</Text>
         <Grid.Container gap={2}>
-          <Grid xs={12} css={{ padding: '0' }}>
-            <Link href={`/posts/${firstPost._id}`}>
-              <PostCard post={firstPost} />
-            </Link>
-          </Grid>
-        </Grid.Container>
-        <Grid.Container gap={2}>
-          {postsExceptFirst.map((post, index) => {
+          {recentPosts.map((post, index) => {
             return (
-              <Grid key={index} xs={12} sm={6} css={{ padding: '0' }}>
+              <StyledGrid key={index} xs={12} css={{ px: '0', pb: '0' }}>
                 <Link href={`/posts/${post._id}`}>
                   <PostCard post={post} />
                 </Link>
-              </Grid>
+              </StyledGrid>
             );
           })}
         </Grid.Container>
@@ -46,6 +38,12 @@ const Index = ({ recentPosts }: Props) => {
     </DefaultLayout>
   );
 };
+
+const StyledGrid = styled(Grid)`
+  > .nextui-link {
+    width: 100%;
+  }
+`;
 
 export default Index;
 
