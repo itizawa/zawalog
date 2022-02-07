@@ -34,20 +34,18 @@ const PostPage: NextPage<Props> = ({ post }) => {
         {router.isFallback ? (
           <Text>Loading…</Text>
         ) : (
-          <>
-            <article className="mb-32">
-              <Head>
-                <title>{post.title}</title>
-                <meta property="og:image" content={post.coverImage} />
-              </Head>
-              <Text h3>{post.title}</Text>
-              <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
-                投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
-              </Text>
-              <img src={post.coverImage} alt={`Cover Image for ${post.title}`} />
-              <StyledDiv dangerouslySetInnerHTML={{ __html: post.content }} />
-            </article>
-          </>
+          <article className="mb-32">
+            <Head>
+              <title>{post.title}</title>
+              <meta property="og:image" content={post.coverImage} />
+            </Head>
+            <Text h3>{post.title}</Text>
+            <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
+              投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
+            </Text>
+            <img src={post.coverImage} alt={`Cover Image for ${post.title}`} />
+            <StyledDiv dangerouslySetInnerHTML={{ __html: post.content }} />
+          </article>
         )}
       </Container>
     </DefaultLayout>
