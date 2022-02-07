@@ -1,9 +1,12 @@
-import { useRouter } from 'next/router';
+import { NextPage } from 'next';
 import ErrorPage from 'next/error';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+
 import { Container, Text } from '@nextui-org/react';
 import { format } from 'date-fns';
 import styled from 'styled-components';
-import Head from 'next/head';
+
 import markdownToHtml from '~/lib/markdownToHtml';
 import { getPostBySlug, getAllPosts } from '~/lib/api';
 import { Post } from '~/domains/Post';
@@ -17,7 +20,7 @@ type Props = {
   preview?: boolean;
 };
 
-const PostPage = ({ post }: Props) => {
+const PostPage: NextPage<Props> = ({ post }) => {
   const router = useRouter();
 
   if (!router.isFallback && !post?.slug) {
