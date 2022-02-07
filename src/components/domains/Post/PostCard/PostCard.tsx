@@ -35,9 +35,6 @@ export const PostCard: VFC<Props> = ({ post }) => {
           <Text size={16} weight="bold" transform="uppercase" color="$black">
             {format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
           </Text>
-          <Text size={14} color="$black">
-            {post.description}
-          </Text>
         </Col>
       </Card.Footer>
     </StyledCard>
