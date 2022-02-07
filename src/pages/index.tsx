@@ -22,10 +22,10 @@ const Index = ({ allPosts }: Props) => {
       <OgpHead title="Zawalog | Top" />
       <Container xs>
         <Text h3>🎉 Welcome to Zawalog 🎉</Text>
-        <Text css={{ my: '$4' }}>Zawalog は、 itizawa のブログ兼アウトプットをまとめる統合サイトです</Text>
         <Image src={IMAGE_PATH.OGP} width={1200} height={630} />
+        <Text css={{ my: '$4' }}>Zawalog は、 itizawa のブログ兼アウトプットをまとめる統合サイトです</Text>
         <Grid.Container gap={2}>
-          <Grid xs={12}>
+          <Grid xs={12} css={{ padding: '0' }}>
             <Link href={`/posts/${firstPost.slug}`}>
               <PostCard post={firstPost} />
             </Link>
@@ -34,7 +34,7 @@ const Index = ({ allPosts }: Props) => {
         <Grid.Container gap={2}>
           {postsExceptFirst.map((post, index) => {
             return (
-              <Grid key={index} xs={12} sm={6}>
+              <Grid key={index} xs={12} sm={6} css={{ padding: '0' }}>
                 <Link href={`/posts/${post.slug}`}>
                   <PostCard post={post} />
                 </Link>
