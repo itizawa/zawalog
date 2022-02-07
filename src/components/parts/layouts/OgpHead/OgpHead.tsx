@@ -22,12 +22,12 @@ export const OgpHead: VFC<Props> = ({ siteName, title, url, image, description, 
       <meta name="keywords" content={keywords.length > 0 ? keywords?.join(',') : KEYWORDS} />
       <meta property="og:site_name" content={siteName || 'zawalog'} />
       <meta property="og:title" content={title || 'zawalog'} />
-      <meta property="og:url" content={url || 'https://www.itizaworld.com/'} />
-      <meta property="og:image" content={image || `https://www.itizaworld.com${IMAGE_PATH.OGP}`} />
+      <meta property="og:url" content={url || process.env.NEXT_PUBLIC_ROOT_URL} />
+      <meta property="og:image" content={image || `${process.env.NEXT_PUBLIC_ROOT_URL}${IMAGE_PATH.OGP}`} />
       <meta property="og:description" content={description || DESCRIPTION} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title || 'zawalog'} />
-      <meta name="twitter:image" content={image || `https://www.itizaworld.com${IMAGE_PATH.OGP}`} />
+      <meta name="twitter:image" content={image || `${process.env.NEXT_PUBLIC_ROOT_URL}${IMAGE_PATH.OGP}`} />
       <meta name="twitter:description" content={description || DESCRIPTION} />
     </Head>
   );
