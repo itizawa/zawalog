@@ -40,7 +40,7 @@ const PostPage: NextPage<Props> = ({ post }) => {
                 <title>{post.title}</title>
                 <meta property="og:image" content={post.coverImage} />
               </Head>
-              <Text h1>{post.title}</Text>
+              <Text h3>{post.title}</Text>
               <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
                 投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
               </Text>
