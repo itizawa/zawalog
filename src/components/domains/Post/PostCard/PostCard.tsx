@@ -20,7 +20,7 @@ export const PostCard: VFC<Props> = ({ post }) => {
         作成日：{format(new Date(post.createdAt), DATE_FORMAT.EXCEPT_SECOND)}
       </Text>
       <Text size={12} transform="uppercase" color="$white">
-        更新日：{format(new Date(post.createdAt), DATE_FORMAT.EXCEPT_SECOND)}
+        更新日：{format(new Date(post.updatedAt), DATE_FORMAT.EXCEPT_SECOND)}
       </Text>
     </Card>
   );
