@@ -1,6 +1,6 @@
 import { Container, Grid, Text } from '@nextui-org/react';
 import Image from 'next/image';
-import { getAllPosts } from '~/lib/api';
+import fetch from 'node-fetch';
 
 import { Post } from '~/domains/Post';
 
@@ -11,11 +11,11 @@ import { OgpHead } from '~/components/parts/layouts/OgpHead';
 import { IMAGE_PATH } from '~/constants/imagePath';
 
 type Props = {
-  allPosts: Post[];
+  recentPosts: Post[];
 };
 
-const Index = ({ allPosts }: Props) => {
-  const [firstPost, ...postsExceptFirst] = allPosts;
+const Index = ({ recentPosts }: Props) => {
+  const [firstPost, ...postsExceptFirst] = recentPosts;
 
   return (
     <DefaultLayout>
@@ -26,7 +26,7 @@ const Index = ({ allPosts }: Props) => {
         <Text css={{ my: '$4' }}>Zawalog は、 itizawa のブログ兼アウトプットをまとめる統合サイトです</Text>
         <Grid.Container gap={2}>
           <Grid xs={12} css={{ padding: '0' }}>
-            <Link href={`/posts/${firstPost.slug}`}>
+            <Link href={`/posts/${firstPost._id}`}>
               <PostCard post={firstPost} />
             </Link>
           </Grid>
@@ -35,7 +35,7 @@ const Index = ({ allPosts }: Props) => {
           {postsExceptFirst.map((post, index) => {
             return (
               <Grid key={index} xs={12} sm={6} css={{ padding: '0' }}>
-                <Link href={`/posts/${post.slug}`}>
+                <Link href={`/posts/${post._id}`}>
                   <PostCard post={post} />
                 </Link>
               </Grid>
@@ -50,9 +50,19 @@ const Index = ({ allPosts }: Props) => {
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(['title', 'date', 'slug', 'coverImage', 'description']);
-
-  return {
-    props: { allPosts },
-  };
+  try {
+    const pages = await fetch('https://itizawa-tech.growi.cloud/_api/pages.list?path=/projects/Zawalog/public/&limit=10');
+    const result = (await pages.json()) as { pages: Post[] };
+    return {
+      props: {
+        recentPosts: result.pages,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        recentPosts: [],
+      },
+    };
+  }
 };
