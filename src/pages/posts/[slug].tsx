@@ -43,7 +43,7 @@ const PostPage: NextPage<Props> = ({ post }) => {
             <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
               投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
             </Text>
-            <img src={post.coverImage} alt={`Cover Image for ${post.title}`} />
+            <img src={post.coverImage} width="100%" height="auto" alt={`Cover Image for ${post.title}`} />
             <StyledDiv dangerouslySetInnerHTML={{ __html: post.content }} />
           </article>
         )}
