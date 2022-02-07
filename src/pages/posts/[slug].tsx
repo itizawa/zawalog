@@ -29,7 +29,7 @@ const PostPage: NextPage<Props> = ({ post }) => {
 
   return (
     <DefaultLayout>
-      <OgpHead />
+      <OgpHead image={`/api/ogp/post?title=${post.title}`} description={post.description} />
       <Container xs>
         {router.isFallback ? (
           <Text>Loading…</Text>
