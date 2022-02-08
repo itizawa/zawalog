@@ -11,6 +11,7 @@ const myDarkTheme = createTheme({
       secondary: '#7856ff',
       selection: '#7856ff',
     },
+    letterSpacings: { normal: '0.1em' },
     space: {},
     fonts: {
       sans: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto','Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;",
