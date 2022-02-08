@@ -64,7 +64,7 @@ export const PostOgp: VFC<Props> = ({ title }) => {
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       word-break: break-all;
-      color: #eee;
+      color: #333;
     }
   `;
 
