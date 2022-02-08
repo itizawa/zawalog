@@ -11,7 +11,7 @@ type Props = {
 
 export const Link: VFC<Props> = ({ href, color = 'primary', target, children }) => (
   <NextLink href={href} passHref>
-    <NextUiLink color={color} target={target || '_self'} rel={target ? 'opener noreferrer' : ''}>
+    <NextUiLink color={color} target={target || '_self'} rel={target ? 'opener noreferrer' : ''} className="nextui-link">
       {children}
     </NextUiLink>
   </NextLink>

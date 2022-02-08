@@ -1,16 +1,16 @@
 export class Post {
-  slug: string;
+  id: string;
   title: string;
-  date: string;
-  coverImage?: string;
-  content: string;
-  description: string;
-  constructor({ slug, title, date, coverImage, content, description }: Post) {
-    this.slug = slug;
+  body: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  constructor({ id, title, body, createdAt, updatedAt, publishedAt }: Post) {
+    this.id = id;
     this.title = title;
-    this.date = date;
-    this.coverImage = coverImage;
-    this.content = content;
-    this.description = description;
+    this.body = body;
+    this.createdAt = createdAt;
+    this.updatedAt = updatedAt;
+    this.publishedAt = publishedAt;
   }
 }

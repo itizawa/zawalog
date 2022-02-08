@@ -7,10 +7,6 @@ type Props = {
 export const PostOgp: VFC<Props> = ({ title }) => {
   const css = `
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
-    @font-face {
-      font-family: 'NotoColorEmoji';
-      src: url('https://raw.githack.com/googlei18n/noto-emoji/master/fonts/NotoColorEmoji.ttf') format('truetype');
-    }
     html,
     body {
       margin: 0;
@@ -26,38 +22,7 @@ export const PostOgp: VFC<Props> = ({ title }) => {
       background-image: ${`url(${process.env.NEXT_PUBLIC_ROOT_URL}/assets/images/ogp.png)`};
       background-size: cover;
       background-position: center center;
-      font-family: 'Noto Sans JP', 'NotoColorEmoji', sans-serif;
-    }
-    .teamInfo {
-      position: absolute;
-      top: 40px;
-      left: 80px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .teamIcon {
-      position: relative;
-      overflow: hidden;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      z-index: 1;
-      margin-right: 4px;
-      border: 2px solid #6684F7;
-    }
-    .teamIcon > img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-    .teamName {
-      font-size: 40px;
-      font-weight: bold;
+      font-family: 'Noto Sans JP', sans-serif;
     }
     .title {
       font-size: 64px;
@@ -68,6 +33,7 @@ export const PostOgp: VFC<Props> = ({ title }) => {
       -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       word-break: break-all;
+      color: #333;
     }
   `;
 
