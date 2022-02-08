@@ -38,16 +38,15 @@ const PostPage: NextPage<Props> = ({ post }) => {
             <Head>
               <title>{post.title}</title>
             </Head>
-            <Text h3>{post.title}</Text>
-            <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
-              投稿日：{format(new Date(post.createdAt), DATE_FORMAT.EXCEPT_SECOND)}
+            <Text h3 css={{ marginBottom: '$2' }}>
+              {post.title}
             </Text>
-            <img
-              src={`${process.env.NEXT_PUBLIC_ROOT_URL}/api/ogp/post?title=${post.title}`}
-              width="100%"
-              height="auto"
-              alt={`Image for ${post.title}`}
-            />
+            <Text size={12} transform="uppercase" color="$white">
+              公開日：{format(new Date(post.publishedAt), DATE_FORMAT.EXCEPT_SECOND)}
+            </Text>
+            <Text size={12} transform="uppercase" color="$white" css={{ marginBottom: '$2' }}>
+              更新日：{format(new Date(post.updatedAt), DATE_FORMAT.EXCEPT_SECOND)}
+            </Text>
             <StyledDiv dangerouslySetInnerHTML={{ __html: post.body }} />
           </article>
         )}
