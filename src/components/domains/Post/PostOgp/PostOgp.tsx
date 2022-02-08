@@ -24,37 +24,6 @@ export const PostOgp: VFC<Props> = ({ title }) => {
       background-position: center center;
       font-family: 'Noto Sans JP', sans-serif;
     }
-    .teamInfo {
-      position: absolute;
-      top: 40px;
-      left: 80px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .teamIcon {
-      position: relative;
-      overflow: hidden;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      z-index: 1;
-      margin-right: 4px;
-      border: 2px solid #6684F7;
-    }
-    .teamIcon > img {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
-    .teamName {
-      font-size: 40px;
-      font-weight: bold;
-    }
     .title {
       font-size: 64px;
       line-height: 1.2;
