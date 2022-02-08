@@ -1,9 +1,12 @@
 import { Container, Grid, Text } from '@nextui-org/react';
 import Image from 'next/image';
-import fetch from 'node-fetch';
 
 import styled from 'styled-components';
+
+import { PaginationResult } from '~/domains/PaginationResult';
 import { Post } from '~/domains/Post';
+
+import { cmsClient } from '~/lib/api';
 
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
 import { PostCard } from '~/components/domains/Post';
@@ -27,7 +30,7 @@ const Index = ({ recentPosts }: Props) => {
           {recentPosts.map((post, index) => {
             return (
               <StyledGrid key={index} xs={12} css={{ px: '0', pb: '0' }}>
-                <Link href={`/posts/${post._id}`}>
+                <Link href={`/posts/${post.id}`}>
                   <PostCard post={post} />
                 </Link>
               </StyledGrid>
@@ -49,11 +52,14 @@ export default Index;
 
 export const getStaticProps = async () => {
   try {
-    const pages = await fetch('https://itizawa-tech.growi.cloud/_api/pages.list?path=/projects/Zawalog/public/&limit=10');
-    const result = (await pages.json()) as { pages: Post[] };
+    const result = await cmsClient.get<PaginationResult<Post>>({
+      endpoint: 'posts',
+      queries: { orders: '-publishedAt', limit: 100 },
+    });
+
     return {
       props: {
-        recentPosts: result.pages,
+        recentPosts: result.contents,
       },
     };
   } catch (error) {
