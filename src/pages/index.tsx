@@ -24,8 +24,9 @@ const Index = ({ recentPosts }: Props) => {
       <OgpHead title="Zawalog | Top" />
       <Container xs>
         <Text h3>🎉 Welcome to Zawalog 🎉</Text>
-        <Image src={IMAGE_PATH.OGP} width={1200} height={630} />
         <Text css={{ my: '$4' }}>Zawalog は、 itizawa のブログ兼アウトプットをまとめる統合サイトです</Text>
+        <Image src={IMAGE_PATH.OGP} width={1200} height={630} />
+        <Text css={{ my: '$4', textAlign: 'center', borderBottom: '$secondary solid 1px', fontWeight: '$bold' }}>開発日誌</Text>
         <Grid.Container gap={2}>
           {recentPosts.map((post, index) => {
             return (
