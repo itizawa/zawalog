@@ -7,12 +7,12 @@ import { Container, Text } from '@nextui-org/react';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 
-import markdownToHtml from '~/lib/markdownToHtml';
-import { getPostBySlug, getAllPosts } from '~/lib/api';
+import { cmsClient } from '~/lib/api';
 import { Post } from '~/domains/Post';
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
 import { DATE_FORMAT } from '~/constants/dateFormat';
 import { OgpHead } from '~/components/parts/layouts/OgpHead';
+import { PaginationResult } from '~/domains/PaginationResult';
 
 type Props = {
   post: Post;
@@ -23,7 +23,7 @@ type Props = {
 const PostPage: NextPage<Props> = ({ post }) => {
   const router = useRouter();
 
-  if (!router.isFallback && !post?.slug) {
+  if (!router.isFallback && !post?.id) {
     return <ErrorPage statusCode={404} />;
   }
 
@@ -37,14 +37,17 @@ const PostPage: NextPage<Props> = ({ post }) => {
           <article className="mb-32">
             <Head>
               <title>{post.title}</title>
-              <meta property="og:image" content={post.coverImage} />
             </Head>
-            <Text h3>{post.title}</Text>
-            <Text size={18} weight="bold" transform="uppercase" css={{ my: '$2' }}>
-              投稿日：{format(new Date(post.date), DATE_FORMAT.EXCEPT_SECOND)}
+            <Text h3 css={{ marginBottom: '$2' }}>
+              {post.title}
             </Text>
-            <img src={post.coverImage} width="100%" height="auto" alt={`Cover Image for ${post.title}`} />
-            <StyledDiv dangerouslySetInnerHTML={{ __html: post.content }} />
+            <Text size={12} transform="uppercase" color="$white">
+              公開日：{format(new Date(post.publishedAt), DATE_FORMAT.EXCEPT_SECOND)}
+            </Text>
+            <Text size={12} transform="uppercase" color="$white" css={{ marginBottom: '$2' }}>
+              更新日：{format(new Date(post.updatedAt), DATE_FORMAT.EXCEPT_SECOND)}
+            </Text>
+            <StyledDiv dangerouslySetInnerHTML={{ __html: post.body }} />
           </article>
         )}
       </Container>
@@ -94,27 +97,43 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, ['title', 'date', 'slug', 'author', 'content', 'ogImage', 'coverImage', 'description']);
-  const content = await markdownToHtml(post.content || '');
+  if (!cmsClient.client) {
+    return {
+      props: {
+        recentPosts: [],
+      },
+    };
+  }
+  const post = await cmsClient.client.get<Post>({
+    endpoint: 'posts',
+    contentId: params.slug,
+  });
 
   return {
     props: {
-      post: {
-        ...post,
-        content,
-      },
+      post,
     },
   };
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(['slug']);
+  if (!cmsClient.client) {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
+
+  const result = await cmsClient.client.get<PaginationResult<Pick<Post, 'id'>>>({
+    endpoint: 'posts',
+    queries: { fields: 'id' },
+  });
 
   return {
-    paths: posts.map((post) => {
+    paths: result.contents.map((post) => {
       return {
         params: {
-          slug: post.slug,
+          slug: post.id,
         },
       };
     }),

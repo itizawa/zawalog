@@ -1,8 +1,12 @@
 import { Container, Grid, Text } from '@nextui-org/react';
 import Image from 'next/image';
-import { getAllPosts } from '~/lib/api';
 
+import styled from 'styled-components';
+
+import { PaginationResult } from '~/domains/PaginationResult';
 import { Post } from '~/domains/Post';
+
+import { cmsClient } from '~/lib/api';
 
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
 import { PostCard } from '~/components/domains/Post';
@@ -11,34 +15,26 @@ import { OgpHead } from '~/components/parts/layouts/OgpHead';
 import { IMAGE_PATH } from '~/constants/imagePath';
 
 type Props = {
-  allPosts: Post[];
+  recentPosts: Post[];
 };
 
-const Index = ({ allPosts }: Props) => {
-  const [firstPost, ...postsExceptFirst] = allPosts;
-
+const Index = ({ recentPosts }: Props) => {
   return (
     <DefaultLayout>
       <OgpHead title="Zawalog | Top" />
       <Container xs>
         <Text h3>🎉 Welcome to Zawalog 🎉</Text>
-        <Image src={IMAGE_PATH.OGP} width={1200} height={630} />
         <Text css={{ my: '$4' }}>Zawalog は、 itizawa のブログ兼アウトプットをまとめる統合サイトです</Text>
+        <Image src={IMAGE_PATH.OGP} width={1200} height={630} />
+        <Text css={{ my: '$4', textAlign: 'center', borderBottom: '$secondary solid 1px', fontWeight: '$bold' }}>開発日誌</Text>
         <Grid.Container gap={2}>
-          <Grid xs={12} css={{ padding: '0' }}>
-            <Link href={`/posts/${firstPost.slug}`}>
-              <PostCard post={firstPost} />
-            </Link>
-          </Grid>
-        </Grid.Container>
-        <Grid.Container gap={2}>
-          {postsExceptFirst.map((post, index) => {
+          {recentPosts.map((post, index) => {
             return (
-              <Grid key={index} xs={12} sm={6} css={{ padding: '0' }}>
-                <Link href={`/posts/${post.slug}`}>
+              <StyledGrid key={index} xs={12} css={{ px: '0', pb: '0' }}>
+                <Link href={`/posts/${post.id}`}>
                   <PostCard post={post} />
                 </Link>
-              </Grid>
+              </StyledGrid>
             );
           })}
         </Grid.Container>
@@ -47,12 +43,38 @@ const Index = ({ allPosts }: Props) => {
   );
 };
 
+const StyledGrid = styled(Grid)`
+  > .nextui-link {
+    width: 100%;
+  }
+`;
+
 export default Index;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(['title', 'date', 'slug', 'coverImage', 'description']);
+  if (!cmsClient.client) {
+    return {
+      props: {
+        recentPosts: [],
+      },
+    };
+  }
+  try {
+    const result = await cmsClient.client.get<PaginationResult<Post>>({
+      endpoint: 'posts',
+      queries: { orders: '-publishedAt', limit: 100 },
+    });
 
-  return {
-    props: { allPosts },
-  };
+    return {
+      props: {
+        recentPosts: result.contents,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        recentPosts: [],
+      },
+    };
+  }
 };
