@@ -52,8 +52,15 @@ const StyledGrid = styled(Grid)`
 export default Index;
 
 export const getStaticProps = async () => {
+  if (!cmsClient.client) {
+    return {
+      props: {
+        recentPosts: [],
+      },
+    };
+  }
   try {
-    const result = await cmsClient.get<PaginationResult<Post>>({
+    const result = await cmsClient.client.get<PaginationResult<Post>>({
       endpoint: 'posts',
       queries: { orders: '-publishedAt', limit: 100 },
     });

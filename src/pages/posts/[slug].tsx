@@ -97,7 +97,14 @@ type Params = {
 };
 
 export async function getStaticProps({ params }: Params) {
-  const post = await cmsClient.get<Post>({
+  if (!cmsClient.client) {
+    return {
+      props: {
+        recentPosts: [],
+      },
+    };
+  }
+  const post = await cmsClient.client.get<Post>({
     endpoint: 'posts',
     contentId: params.slug,
   });
@@ -110,7 +117,14 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const result = await cmsClient.get<PaginationResult<Pick<Post, 'id'>>>({
+  if (!cmsClient.client) {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
+
+  const result = await cmsClient.client.get<PaginationResult<Pick<Post, 'id'>>>({
     endpoint: 'posts',
     queries: { fields: 'id' },
   });
