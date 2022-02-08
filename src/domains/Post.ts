@@ -1,12 +1,16 @@
 export class Post {
-  _id: string;
-  path: string;
+  id: string;
+  title: string;
+  body: string;
   createdAt: string;
   updatedAt: string;
-  constructor({ _id, path, createdAt, updatedAt }: Post) {
-    this._id = _id;
-    this.path = path;
+  publishedAt: string;
+  constructor({ id, title, body, createdAt, updatedAt, publishedAt }: Post) {
+    this.id = id;
+    this.title = title;
+    this.body = body;
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
+    this.publishedAt = publishedAt;
   }
 }
