@@ -4,15 +4,13 @@ export class Product {
   url: string;
   image: string;
   description: string;
-  createdAt: string;
-  updatedAt: string;
-  constructor({ id, title, url, image, description, createdAt, updatedAt }: Product) {
+  releasedAt: string;
+  constructor({ id, title, url, image, description, releasedAt }: Product) {
     this.id = id;
     this.title = title;
     this.url = url;
     this.image = image;
     this.description = description;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
+    this.releasedAt = releasedAt;
   }
 }
