@@ -12,7 +12,7 @@ type Props = {
 
 export const ProductCard: VFC<Props> = ({ product }) => {
   return (
-    <StyledCard clickable cover css={{ overflow: 'hidden' }} bordered>
+    <StyledCard clickable cover css={{ overflow: 'hidden', height: '100%' }} bordered>
       <Card.Body>
         <Card.Image src={product.image || '/'} showSkeleton height="100%" width="100%" alt={`${product.id}-cover`} />
       </Card.Body>
@@ -32,7 +32,7 @@ export const ProductCard: VFC<Props> = ({ product }) => {
             {product.title}
           </Text>
           <Text size={12} weight="bold" color="$black">
-            🎉 Released: {format(new Date(product.createdAt), DATE_FORMAT.ONLY_DATE)}
+            🎉 Released: {format(new Date(product.releasedAt), DATE_FORMAT.ONLY_DATE)}
           </Text>
           <Text size={16} weight="bold" color="$black">
             {product.description}
