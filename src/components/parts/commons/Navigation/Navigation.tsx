@@ -16,7 +16,7 @@ export const Navigation: VFC = () => {
         <Link href="/">
           <Text color="white">Home</Text>
         </Link>
-        <Link href="/product">
+        <Link href="/products">
           <Text color="white">Product</Text>
         </Link>
       </Grid>
