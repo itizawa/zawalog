@@ -6,7 +6,7 @@ import { IMAGE_PATH } from '~/constants/imagePath';
 
 export const Footer: VFC = () => {
   return (
-    <Container md css={{ pt: '$40', pb: '$4', textAlign: 'center' }}>
+    <Container md css={{ pt: '$10', pb: '$4', textAlign: 'center' }}>
       <Grid css={{ display: 'flex', gap: '$8', pb: '$4' }}>
         <Link href="https://github.com/itizaworld/zawalog" target="__blank">
           <Text color="white" css={{ cursor: 'pointer' }}>
