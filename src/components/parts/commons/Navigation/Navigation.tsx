@@ -13,12 +13,12 @@ export const Navigation: VFC = () => {
         </Link>
       </div>
       <Grid css={{ display: 'flex', gap: '$8' }}>
-        {/* <Link href="/">
+        <Link href="/">
           <Text color="white">Home</Text>
-        </Link> */}
-        {/* <Link href="/product">
+        </Link>
+        <Link href="/products">
           <Text color="white">Product</Text>
-        </Link> */}
+        </Link>
       </Grid>
     </Container>
   );
