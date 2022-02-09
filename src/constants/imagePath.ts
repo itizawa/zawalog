@@ -6,4 +6,5 @@ export const IMAGE_PATH = {
   TEACH_404: '/images/Teach_SVG.svg',
   OGP: '/assets/images/dark-logo.png',
   NO_IMAGE: '/images/no-image.png',
+  WEBEV_LOGO: '/assets/images/webev-logo.png',
 };
