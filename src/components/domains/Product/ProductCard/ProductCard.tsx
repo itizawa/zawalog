@@ -31,8 +31,11 @@ export const ProductCard: VFC<Props> = ({ product }) => {
           <Text size={24} weight="bold" color="$black">
             {product.title}
           </Text>
-          <Text size={16} weight="bold" transform="uppercase" color="$black">
-            {format(new Date(product.updatedAt), DATE_FORMAT.EXCEPT_SECOND)}
+          <Text size={12} weight="bold" color="$black">
+            🎉 Released: {format(new Date(product.createdAt), DATE_FORMAT.ONLY_DATE)}
+          </Text>
+          <Text size={16} weight="bold" color="$black">
+            {product.description}
           </Text>
         </Col>
       </Card.Footer>
