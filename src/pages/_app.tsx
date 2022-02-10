@@ -1,6 +1,7 @@
 import { createTheme, NextUIProvider } from '@nextui-org/react';
 import { AppProps } from 'next/app';
 import 'ress';
+import { usePageView } from '~/hooks';
 
 const myDarkTheme = createTheme({
   type: 'dark',
@@ -20,6 +21,8 @@ const myDarkTheme = createTheme({
 });
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  usePageView();
+
   return (
     <NextUIProvider theme={myDarkTheme}>
       <Component {...pageProps} />
