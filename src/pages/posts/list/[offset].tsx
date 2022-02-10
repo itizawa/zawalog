@@ -1,8 +1,9 @@
 import { GetStaticPaths, NextPage } from 'next';
-import { Container, Grid, Text } from '@nextui-org/react';
+import { Container, Grid, Pagination, Text } from '@nextui-org/react';
 
 import styled from 'styled-components';
 
+import { useRouter } from 'next/router';
 import { cmsClient } from '~/lib/api';
 import { Post } from '~/domains/Post';
 import { PaginationResult } from '~/domains/PaginationResult';
@@ -13,10 +14,11 @@ import { Link } from '~/components/parts/commons/Link';
 import { OgpHead } from '~/components/parts/layouts/OgpHead';
 
 type Props = {
-  posts: Post[];
+  paginationResult: PaginationResult<Post>;
 };
 
-const Index: NextPage<Props> = ({ posts }) => {
+const Index: NextPage<Props> = ({ paginationResult }) => {
+  const router = useRouter();
   return (
     <DefaultLayout>
       <OgpHead title="Zawalog | Products" />
@@ -24,8 +26,9 @@ const Index: NextPage<Props> = ({ posts }) => {
         <Text h3 css={{ my: '$4', textAlign: 'center', borderBottom: '$secondary solid 1px', fontWeight: '$bold' }}>
           Posts List
         </Text>
+
         <Grid.Container gap={2}>
-          {posts.map((post, index) => {
+          {paginationResult.contents.map((post, index) => {
             return (
               <StyledGrid key={index} xs={12} css={{ px: '0', pb: '0' }}>
                 <Link href={`/posts/${post.id}`}>
@@ -34,6 +37,15 @@ const Index: NextPage<Props> = ({ posts }) => {
               </StyledGrid>
             );
           })}
+        </Grid.Container>
+        <Grid.Container css={{ justifyContent: 'center', display: 'flex', py: '$10' }}>
+          <Pagination
+            shadow
+            color="secondary"
+            total={Math.ceil(paginationResult.totalCount / paginationResult.limit)}
+            initialPage={paginationResult.offset + 1}
+            onChange={(page) => router.push(`/posts/list/${page}`)}
+          />
         </Grid.Container>
       </Container>
     </DefaultLayout>
@@ -71,7 +83,7 @@ export const getStaticProps = async ({ params }: Params) => {
 
     return {
       props: {
-        posts: result.contents,
+        paginationResult: result,
       },
     };
   } catch (error) {
