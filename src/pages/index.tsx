@@ -1,4 +1,4 @@
-import { Container, Grid, Text } from '@nextui-org/react';
+import { Button, Container, Grid, Text } from '@nextui-org/react';
 import Image from 'next/image';
 
 import styled from 'styled-components';
@@ -37,6 +37,13 @@ const Index = ({ recentPosts }: Props) => {
               </StyledGrid>
             );
           })}
+          <Grid css={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <Link href={`/posts/list/1`}>
+              <Button color="secondary" css={{ marginTop: '$10' }}>
+                もっと見る
+              </Button>
+            </Link>
+          </Grid>
         </Grid.Container>
       </Container>
     </DefaultLayout>
