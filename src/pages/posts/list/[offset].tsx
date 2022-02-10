@@ -1,4 +1,5 @@
 import { GetStaticPaths, NextPage } from 'next';
+import ErrorPage from 'next/error';
 import { Container, Grid, Pagination, Text } from '@nextui-org/react';
 
 import styled from 'styled-components';
@@ -19,6 +20,10 @@ type Props = {
 
 const Index: NextPage<Props> = ({ paginationResult }) => {
   const router = useRouter();
+
+  if (!router.isFallback && !paginationResult) {
+    return <ErrorPage statusCode={404} />;
+  }
   return (
     <DefaultLayout>
       <OgpHead title="Zawalog | Products" />
