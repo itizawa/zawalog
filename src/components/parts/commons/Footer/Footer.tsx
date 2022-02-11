@@ -26,7 +26,7 @@ export const Footer: VFC = () => {
           <Image width={20} height={20} src={IMAGE_PATH.WEBEV_LOGO} />
         </Link>
       </Grid>
-      <Text color="white" size={10}>
+      <Text color="white" size={14}>
         Copyright © 2022 Itizawa. All Rights Reserved.
       </Text>
     </Container>
