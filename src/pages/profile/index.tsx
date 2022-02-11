@@ -1,4 +1,4 @@
-import { Avatar, Card, Container, Grid, Text } from '@nextui-org/react';
+import { Avatar, Container, Grid, Text } from '@nextui-org/react';
 import Image from 'next/image';
 
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
