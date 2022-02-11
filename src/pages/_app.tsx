@@ -19,6 +19,9 @@ const myDarkTheme = createTheme({
       mono: 'Hiragino Mincho Pro, Yu Mincho, YuMincho, MS PMincho, serif',
       // mono: "Menlo, Monaco, 'Lucida Console', 'Liberation Mono','DejaVu Sans Mono', 'Bitstream Vera Sans Mono'",
     },
+    fontWeights: {
+      normal: 500,
+    },
   },
 });
 
