@@ -39,7 +39,7 @@ const Index = ({ recentPosts }: Props) => {
           })}
           <Grid css={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <Link href={`/posts/list/1`}>
-              <Button color="secondary" css={{ marginTop: '$10' }}>
+              <Button color="secondary" css={{ marginTop: '$10', fontWeight: 'bold' }}>
                 もっと見る
               </Button>
             </Link>

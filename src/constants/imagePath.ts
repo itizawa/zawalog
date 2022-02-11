@@ -9,4 +9,5 @@ export const IMAGE_PATH = {
   WEBEV_LOGO: '/assets/images/product/webev-logo.png',
   WEBEV_OGP: '/assets/images/product/webev-ogp.png',
   PROECO_OGP: '/assets/images/product/proeco-ogp.svg',
+  ITIZAWA: '/assets/images/itizawa.png',
 };
