@@ -1,4 +1,4 @@
-import { Avatar, Container, Grid, Text } from '@nextui-org/react';
+import { Avatar, Card, Container, Grid, Text } from '@nextui-org/react';
 import Image from 'next/image';
 
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
@@ -52,9 +52,16 @@ const Index = () => {
             </Link>
           </Grid>
         </Grid.Container>
-        <Grid css={{ mt: '$10' }}>
-          <Text h4>Webエンジニアです 🐧</Text>
-          <Text h4>立ち上げフェーズでのプロダクト開発を志向します</Text>
+        <Grid css={{ mt: '$10', rowGap: '$4', display: 'flex', flexDirection: 'column' }}>
+          <Text h5 css={{ mt: '0' }}>
+            Webエンジニアです 🐧
+          </Text>
+          <Text h5 css={{ mt: '0' }}>
+            プロダクトづくりが好きです
+          </Text>
+          <Text h5 css={{ mt: '0' }}>
+            趣味： 映画・散歩
+          </Text>
         </Grid>
       </Container>
     </DefaultLayout>
