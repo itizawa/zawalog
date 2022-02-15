@@ -3,16 +3,19 @@ import ErrorPage from 'next/error';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { Container, Text } from '@nextui-org/react';
+import { Container, Grid, Text } from '@nextui-org/react';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 
-import { cmsClient } from '~/lib/api';
 import { Post } from '~/domains/Post';
+import { PaginationResult } from '~/domains/PaginationResult';
+
+import { cmsClient } from '~/lib/api';
+
 import { DefaultLayout } from '~/components/parts/layouts/DefaultLayout';
 import { DATE_FORMAT } from '~/constants/dateFormat';
 import { OgpHead } from '~/components/parts/layouts/OgpHead';
-import { PaginationResult } from '~/domains/PaginationResult';
+import { Tag } from '~/components/parts/commons/Tag';
 
 type Props = {
   post: Post;
@@ -41,6 +44,11 @@ const PostPage: NextPage<Props> = ({ post }) => {
             <Text h3 css={{ marginBottom: '$2' }}>
               {post.title}
             </Text>
+            <Grid css={{ my: '$2' }}>
+              {post.tags.map((v) => {
+                return <Tag key={v.id}>{v.name}</Tag>;
+              })}
+            </Grid>
             <Text size={12} transform="uppercase" color="$white">
               公開日：{format(new Date(post.publishedAt), DATE_FORMAT.EXCEPT_SECOND)}
             </Text>
