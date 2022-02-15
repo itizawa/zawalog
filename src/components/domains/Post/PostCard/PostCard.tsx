@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import { Card, Text } from '@nextui-org/react';
+import { Card, Grid, Text } from '@nextui-org/react';
 import { format } from 'date-fns';
 
 import { Post } from '~/domains/Post';
@@ -13,13 +13,15 @@ type Props = {
 export const PostCard: VFC<Props> = ({ post }) => {
   return (
     <Card clickable css={{ overflow: 'hidden' }} bordered>
-      <Text size={24} weight="bold" color="$white" css={{ mb: '$2' }}>
+      <Text size={24} weight="bold" color="$white">
         {post.title}
       </Text>
-      {post.tags.map((v) => {
-        return <Tag key={v.id}>{v.name}</Tag>;
-      })}
-      <Text size={12} transform="uppercase" color="$white" css={{ mt: '$2' }}>
+      <Grid css={{ p: '0', my: '$2', display: 'flex', gap: '$2' }}>
+        {post.tags.map((v) => {
+          return <Tag key={v.id}>{v.name}</Tag>;
+        })}
+      </Grid>
+      <Text size={12} transform="uppercase" color="$white">
         公開日：{format(new Date(post.publishedAt), DATE_FORMAT.EXCEPT_SECOND)}
       </Text>
       <Text size={12} transform="uppercase" color="$white">

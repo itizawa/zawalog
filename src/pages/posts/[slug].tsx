@@ -44,7 +44,7 @@ const PostPage: NextPage<Props> = ({ post }) => {
             <Text h3 css={{ marginBottom: '$2' }}>
               {post.title}
             </Text>
-            <Grid css={{ my: '$2' }}>
+            <Grid css={{ my: '$2', display: 'flex', gap: '$2' }}>
               {post.tags.map((v) => {
                 return <Tag key={v.id}>{v.name}</Tag>;
               })}

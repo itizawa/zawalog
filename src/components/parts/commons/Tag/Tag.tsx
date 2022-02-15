@@ -13,6 +13,7 @@ export const Tag: FC = ({ children }) => {
         gap: '$2',
         p: '$2 $3',
         br: '9999px',
+        m: '0',
       }}
       b
     >
