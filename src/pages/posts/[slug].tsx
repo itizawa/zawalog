@@ -3,7 +3,7 @@ import ErrorPage from 'next/error';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
-import { Container, Grid, Text } from '@nextui-org/react';
+import { Button, Container, Grid, Text } from '@nextui-org/react';
 import { format } from 'date-fns';
 import styled from 'styled-components';
 
@@ -61,6 +61,11 @@ const PostPage: NextPage<Props> = ({ post, otherPosts = [] }) => {
               </Text>
               <StyledDiv dangerouslySetInnerHTML={{ __html: post.body }} />
             </article>
+            <Link href={`/posts/list/1`}>
+              <Button color="gradient" bordered css={{ marginTop: '$10', fontWeight: 'bold' }}>
+                {`<`} Post一覧に戻る
+              </Button>
+            </Link>
             <Text h3 css={{ mt: '$40', mb: '$4', textAlign: 'center', borderBottom: '$secondary solid 1px', fontWeight: '$bold' }}>
               その他のPost
             </Text>
