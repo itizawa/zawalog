@@ -22,7 +22,7 @@ const Index = ({ recentPosts }: Props) => {
   return (
     <DefaultLayout>
       <OgpHead title="Zawalog | Top" />
-      <Container sm>
+      <Container sm css={{ pt: '$12' }}>
         <Text h3>🎉 Welcome to Zawalog 🎉</Text>
         <Text css={{ my: '$4' }}>Zawalog は、 itizawa のブログ兼アウトプットをまとめる統合サイトです</Text>
         <Image src={IMAGE_PATH.OGP} width={1200} height={630} alt="image-ogp-top" />

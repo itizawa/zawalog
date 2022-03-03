@@ -10,7 +10,7 @@ const Index = () => {
   return (
     <DefaultLayout>
       <OgpHead title="Zawalog | Top" />
-      <Container sm css={{ minHeight: '70vh' }}>
+      <Container sm css={{ mt: '$12', minHeight: '70vh' }}>
         <Grid.Container alignItems="center">
           <Grid>
             <Avatar size="xl" src={IMAGE_PATH.ITIZAWA} color="gradient" bordered />

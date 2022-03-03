@@ -27,7 +27,7 @@ const Index: NextPage<Props> = ({ paginationResult }) => {
   return (
     <DefaultLayout>
       <OgpHead title="Zawalog | Products" />
-      <Container sm css={{ minHeight: '80vh' }}>
+      <Container sm css={{ mt: '$12', minHeight: '80vh' }}>
         <Text h3 css={{ my: '$4', textAlign: 'center', borderBottom: '$secondary solid 1px', fontWeight: '$bold' }}>
           Posts List
         </Text>
