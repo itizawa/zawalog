@@ -127,6 +127,9 @@ const StyledDiv = styled.div`
   li {
     margin-bottom: 10px;
   }
+  iframe {
+    width: 100%;
+  }
 `;
 
 type Params = {

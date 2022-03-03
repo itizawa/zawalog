@@ -20,7 +20,7 @@ const myDarkTheme = createTheme({
       // mono: "Menlo, Monaco, 'Lucida Console', 'Liberation Mono','DejaVu Sans Mono', 'Bitstream Vera Sans Mono'",
     },
     fontWeights: {
-      normal: 500,
+      normal: 600,
     },
   },
 });
