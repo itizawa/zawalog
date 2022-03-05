@@ -5,12 +5,12 @@ export class Product {
   image: string;
   description: string;
   releasedAt: string;
-  constructor({ id, title, url, image, description, releasedAt }: Product) {
-    this.id = id;
-    this.title = title;
-    this.url = url;
-    this.image = image;
-    this.description = description;
-    this.releasedAt = releasedAt;
+  constructor(init: Product) {
+    this.id = init.id;
+    this.title = init.title;
+    this.url = init.url;
+    this.image = init.image;
+    this.description = init.description;
+    this.releasedAt = init.releasedAt;
   }
 }
