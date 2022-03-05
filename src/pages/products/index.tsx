@@ -35,6 +35,14 @@ const products = [
     description: 'Webev は、誰でも使えるブックマークマネージャーです！URL を入力して保存するだけで Web ページを管理できます。',
     releasedAt: '2021/05/16',
   }),
+  new Product({
+    id: 'era-convertor',
+    title: '元号コンバーター',
+    url: 'https://converter-of-era.vercel.app',
+    image: IMAGE_PATH.ERA_CONVERTOR_OGP,
+    description: 'あなたの生まれ年から各元号何年生まれかを計算します',
+    releasedAt: '2019/04/07',
+  }),
 ];
 
 const Index = () => {
