@@ -12,7 +12,7 @@
     "lint": "eslint \"./**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
-    "@nextui-org/react": "1.0.2-beta.4",
+    "@nextui-org/react": "1.0.2-beta.5-dbg4",
     "date-fns": "2.28.0",
     "gray-matter": "4.0.3",
     "microcms-js-sdk": "2.0.0",
