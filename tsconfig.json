@@ -1,36 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
-    "jsx": "preserve",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "ESNext"
     ],
-    "allowJs": true,
-    "noEmit": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "incremental": true,
-    "baseUrl": "./",
-    "paths": {
-      "~/*": [
-        "src/*"
-      ]
-    },
+    "types": [
+      "@cloudflare/workers-types",
+      "vite/client"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "hono/jsx"
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
 }
