@@ -16,5 +16,24 @@ module.exports = {
     extend: {},
   },
   darkMode: 'class',
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      layout: {},
+      themes: {
+        dark: {
+          colors: {
+            background: '#111122',
+            text: '#eee',
+            secondary: '#7856ff',
+            selection: '#7856ff',
+          },
+          space: {},
+          fonts: {
+            sans: 'Hiragino Mincho Pro, Yu Mincho, YuMincho, MS PMincho, serif',
+            mono: 'Hiragino Mincho Pro, Yu Mincho, YuMincho, MS PMincho, serif',
+          },
+        },
+      },
+    }),
+  ],
 };
