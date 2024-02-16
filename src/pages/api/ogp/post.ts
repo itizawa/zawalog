@@ -14,6 +14,7 @@ const getOgp = async (req: NextApiRequest, res: NextApiResponse) => {
     const page = await browser.newPage({ viewport });
 
     const element = React.createElement(PostOgp, { title: title as string });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const markup = element ? ReactDOMServer.renderToStaticMarkup(element as any) : '';
     const html = `<!doctype html>${markup}`;
 
