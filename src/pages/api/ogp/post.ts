@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import * as playwright from 'playwright-aws-lambda';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { PostOgp } from '~/components/domains/Post';
+import { PostOgp } from '~/app/_components/domains/PostOgp';
 
 const getOgp = async (req: NextApiRequest, res: NextApiResponse) => {
   const { title } = req.query;
@@ -14,7 +14,7 @@ const getOgp = async (req: NextApiRequest, res: NextApiResponse) => {
     const page = await browser.newPage({ viewport });
 
     const element = React.createElement(PostOgp, { title: title as string });
-    const markup = ReactDOMServer.renderToStaticMarkup(element);
+    const markup = element ? ReactDOMServer.renderToStaticMarkup(element as any) : '';
     const html = `<!doctype html>${markup}`;
 
     await page.setContent(html, { waitUntil: 'load' });
