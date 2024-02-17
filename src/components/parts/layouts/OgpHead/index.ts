@@ -1,1 +1,0 @@
-export { OgpHead } from './OgpHead';
