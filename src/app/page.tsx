@@ -6,7 +6,7 @@ import { apiClient } from '~/lib/apiClient';
 import { GetPostsSchema } from '~/schema/post';
 
 export default async function Page() {
-  const { posts } = await apiClient<GetPostsSchema>({
+  const res = await apiClient<GetPostsSchema>({
     path: '/api/posts',
     method: 'GET',
     options: { next: { revalidate: 60 } },
@@ -19,7 +19,7 @@ export default async function Page() {
       <Image src={IMAGE_PATH.OGP} width={1200} height={630} alt="image-ogp-top" className="drop-shadow-sm" />
       <p className="border-b-1 border-slate-400 text-center pb-[8px]">開発日誌</p>
       <div className="flex flex-col gap-4 mt-[16px]">
-        {posts.map((post) => (
+        {res?.posts.map((post) => (
           <Link href={`/posts/${post.id}`} key={post.id}>
             <PostCard {...post} />
           </Link>
