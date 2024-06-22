@@ -14,7 +14,7 @@ export const getPostsSchema = z.object({
   path: z.literal('/api/posts'),
   method: z.literal('GET'),
   responseBody: z.object({
-    posts: z.array(PostSchema),
+    posts: z.array(PostSchema.omit({ body: true }).merge(z.object({ bodyTeaser: z.string() }))),
   }),
 });
 export type GetPostsSchema = z.infer<typeof getPostsSchema>;

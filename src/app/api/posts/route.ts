@@ -11,5 +11,10 @@ export async function GET() {
     },
   });
 
-  return NextResponse.json(serialize({ posts }));
+  const truncatedPosts = posts.map((post) => ({
+    ...post,
+    bodyTeaser: post.body.slice(0, 100),
+  }));
+
+  return NextResponse.json(serialize({ posts: truncatedPosts }));
 }
