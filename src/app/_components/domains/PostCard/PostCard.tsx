@@ -1,5 +1,3 @@
-'use client';
-
 import { FC } from 'react';
 import { Card } from '@nextui-org/card';
 import { format } from 'date-fns';
