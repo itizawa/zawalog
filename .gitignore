@@ -36,3 +36,4 @@ yarn-error.log*
 .env
 
 src/schemas/_gen
+dist
