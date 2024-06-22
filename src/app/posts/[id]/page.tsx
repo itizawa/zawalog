@@ -19,7 +19,7 @@ export default async function Page({ params }: Props) {
         <h1 className="text-2xl font-bold">{post.title}</h1>
         <p className="text-slate-50 text-sm mt-[8px]">公開日：{format(post.publishedAt, DATE_FORMAT.EXCEPT_SECOND)}</p>
         <div className="mt-[24px]">
-          <Preview contentHtml={post.body} />
+          <Preview body={post.body} />
         </div>
       </article>
       <Link href={`/`}>
