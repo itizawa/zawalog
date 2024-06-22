@@ -29,6 +29,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
 
 # vercel
 .vercel
@@ -36,3 +37,4 @@ yarn-error.log*
 .env
 
 src/schemas/_gen
+dist

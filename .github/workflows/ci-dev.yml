@@ -54,6 +54,9 @@ jobs:
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn
       
+      - name: yarn schema:gen
+        run: |
+          yarn schema:gen
       - name: yarn tsc
         run: |
           yarn tsc
@@ -105,7 +108,9 @@ jobs:
       - name: Install Node.js dependencies
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: yarn
-
+      - name: yarn schema:gen
+        run: |
+          yarn schema:gen
       - name: yarn lint
         run: |
           yarn lint
