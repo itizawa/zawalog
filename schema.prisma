@@ -10,6 +10,20 @@ datasource db {
   // or you'll have dangling databases from migrations
   directUrl = env("POSTGRES_URL_NON_POOLING")
 }
+
+generator zod {
+  provider                         = "zod-prisma-types"
+　output                           = "./dist/generated/zod" // 出力ディレクトリの指定
+  useMultipleFiles                 = true // スキーマを複数ファイルに分割
+  writeBarrelFiles                 = false // バレルファイルの生成を無効化
+  createInputTypes                 = false // 入力タイプの生成を無効化
+  createModelTypes                 = true // モデルタイプの生成を有効化
+  addInputTypeValidation           = true // 入力タイプに対するバリデーションの追加
+  createOptionalDefaultValuesTypes = true // デフォルト値を持つフィールドをオプショナルに
+  createRelationValuesTypes        = true // リレーションフィールドを含むタイプの生成
+  createPartialTypes               = true // 全フィールドをオプショナルにしたパーシャルタイプの生成
+  useDefaultValidators             = false // Zodのデフォルトバリデータの使用を無効化
+}
  
 model Post {
   id String @id @default(uuid())
