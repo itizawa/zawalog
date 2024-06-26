@@ -19,4 +19,14 @@ export const getPostsSchema = z.object({
 });
 export type GetPostsSchema = z.infer<typeof getPostsSchema>;
 
-export type PostSchema = GetPostSchema | GetPostsSchema;
+export const postPostsSchema = z.object({
+  path: z.literal('/api/posts'),
+  method: z.literal('POST'),
+  requestBody: z.object({
+    post: PostSchema.pick({ title: true, body: true }),
+  }),
+  responseBody: z.object({ post: PostSchema }),
+});
+export type PostPostsSchema = z.infer<typeof postPostsSchema>;
+
+export type PostSchema = GetPostSchema | GetPostsSchema | PostPostsSchema;
