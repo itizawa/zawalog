@@ -18,3 +18,16 @@ export async function GET() {
 
   return NextResponse.json(serialize({ posts: truncatedPosts }));
 }
+
+export async function POST(req: Request) {
+  const data = await req.json();
+
+  const post = await prisma.post.create({
+    data: {
+      title: data.title,
+      body: data.text,
+    },
+  });
+
+  return NextResponse.json(serialize({ post }));
+}
